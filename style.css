@@ -6,1075 +6,144 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-
+    background: linear-gradient(135deg, #1b4332, #2d6a4f, #40916c);
     min-height: 100vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    padding: 30px;
-
-    background:
-        linear-gradient(
-            rgba(20, 60, 35, 0.85),
-            rgba(5, 35, 20, 0.95)
-        ),
-        url("https://images.unsplash.com/photo-1441974231531-c6227db76b6e")
-        center / cover no-repeat;
-
-    color: #ffffff;
+    padding: 20px;
 }
 
 .caixa-principal {
     width: 100%;
-    max-width: 850px;
-
-    background: rgba(255, 255, 255, 0.96);
-
-    color: #1d3525;
-
-    border-radius: 25px;
-
+    max-width: 800px;
+    background-color: #ffffff;
     padding: 35px;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .cabecalho {
     text-align: center;
-
     margin-bottom: 30px;
 }
 
 .cabecalho h1 {
-    color: #24613b;
-
+    color: #1b4332;
     font-size: 36px;
-
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .cabecalho p {
-    color: #53665a;
-
+    color: #52705b;
     font-size: 17px;
-
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
-.caixa-quiz {
-    width: 100%;
-}
+/* Pergunta */
 
 .caixa-perguntas {
-    background: #e8f3e9;
-
-    border-left: 6px solid #2e7d46;
-
-    border-radius: 12px;
-
-    padding: 25px;
-
+    background-color: #e9f5ec;
+    border-left: 6px solid #2d6a4f;
+    border-radius: 10px;
+    padding: 20px;
     margin-bottom: 25px;
 
-    font-size: 21px;
-
+    color: #1b4332;
+    font-size: 20px;
     font-weight: bold;
-
     line-height: 1.5;
-
-    color: #23452f;
 }
+
+/* Alternativas */
 
 .caixa-alternativas {
     display: flex;
-
     flex-direction: column;
-
     gap: 15px;
 }
 
 .caixa-alternativas button {
     width: 100%;
+    padding: 18px;
 
-    padding: 18px 20px;
+    background-color: #ffffff;
+    color: #1b4332;
 
-    border: 2px solid #c5d8c8;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    color: #294832;
+    border: 2px solid #95c99f;
+    border-radius: 10px;
 
     font-size: 16px;
-
     text-align: left;
 
     cursor: pointer;
 
-    transition:
-        background 0.3s,
-        color 0.3s,
-        transform 0.2s,
-        border-color 0.3s;
-
+    transition: 0.3s;
 }
 
 .caixa-alternativas button:hover {
-    background: #2e7d46;
-
+    background-color: #2d6a4f;
     color: #ffffff;
-
-    border-color: #2e7d46;
-
+    border-color: #2d6a4f;
     transform: translateY(-2px);
 }
 
-.caixa-alternativas button:active {
-    transform: scale(0.98);
-}
+/* Resultado */
 
 .caixa-resultado {
     display: none;
 
     margin-top: 30px;
-
     padding: 25px;
 
-    border-radius: 15px;
-
-    background: #edf7ee;
-
-    border: 2px solid #72a77e;
+    background-color: #e9f5ec;
+    border-radius: 12px;
+    border: 2px solid #74a57f;
 }
 
 .caixa-resultado h2 {
-    color: #24613b;
-
+    color: #1b4332;
     margin-bottom: 15px;
-
-    font-size: 25px;
 }
 
 .texto-resultado {
-    color: #3f5145;
-
+    color: #344e41;
     font-size: 17px;
-const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-const caixaPrincipal = document.querySelector(".caixa-principal");
-const caixaPerguntas = document.querySelector(".caixa-perguntas");
-const caixaAlternativas = document.querySelector(".caixa-alternativas");
-const caixaResultado = document.querySelector(".caixa-resultado");
-const textoResultado = document.querySelector(".texto-resultado");
-
-const perguntas = [
-    {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
-        alternativas: [
-            {
-                texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
-                afirmacao: "Você demonstra responsabilidade ambiental e entende que denunciar crimes contra a fauna é uma forma importante de proteger os animais."
-            },
-            {
-                texto: "Ignorar a situação, pois acredita que a preservação dos animais é responsabilidade apenas das autoridades.",
-                afirmacao: "Você prefere não se envolver, mas a participação da sociedade é importante para combater a caça ilegal e proteger a biodiversidade."
-            }
-        ]
-    },
-
-    {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
-        alternativas: [
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-
-            {
-                texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
-                afirmacao: "Você demonstra consciência ambiental e entende que respeitar as regras de pesca ajuda a preservar as espécies para as próximas gerações."
-            },
-            {
-                texto: "Pescar o máximo possível sempre que houver oportunidade, independentemente das regras.",
-                afirmacao: "Você valoriza a atividade de pesca, mas é importante compreender que a captura excessiva pode prejudicar os ecossistemas e diminuir as populações de peixes."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
-        alternativas: [
-            {
-                texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
-                afirmacao: "Você compreende que a retirada excessiva de animais da natureza pode afetar toda a cadeia alimentar e a biodiversidade."
-            },
-            {
-                texto: "Porque são atividades que podem acontecer sem autorização ou fora das regras estabelecidas.",
-                afirmacao: "Você reconhece a importância das leis, mas também é importante entender os impactos ambientais causados pela exploração ilegal da fauna."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
-        alternativas: [
-            {
-                texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
-                afirmacao: "Você demonstra responsabilidade e entende que não incentivar o comércio ilegal ajuda a combater o tráfico de animais silvestres."
-            },
-            {
-                texto: "Comprar o animal para tentar salvá-lo da situação em que se encontra.",
-                afirmacao: "Sua intenção é ajudar o animal, mas a compra pode incentivar o comércio ilegal. O mais adequado é procurar as autoridades ou órgãos especializados."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
-                afirmacao: "Você reconhece que a fiscalização é essencial para garantir o cumprimento das leis ambientais e proteger a fauna."
-            },
-            {
-                texto: "A fiscalização não é tão importante, pois as pessoas deveriam decidir livremente como utilizar os recursos naturais.",
-                afirmacao: "Você valoriza a liberdade de utilização dos recursos naturais, mas é necessário respeitar limites para evitar a exploração excessiva e a destruição dos ecossistemas."
-            }
-        ]
-    },
-
-    {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
-        alternativas: [
-            {
-                texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
-                afirmacao: "Você demonstra consciência ambiental e entende que as atitudes da população são fundamentais para proteger a natureza."
-            },
-            {
-                texto: "Deixando o problema apenas para os órgãos de fiscalização e para os governos.",
-                afirmacao: "Você acredita que as autoridades possuem um papel importante, mas a participação da sociedade também é fundamental para combater crimes ambientais."
-            }
-        ]
-    }
-];
-
-let atual = 0;
-let perguntaAtual;
-let historiaFinal = "";
-
-function mostraPergunta() {
-    if (atual >= perguntas.length) {
-        mostraResultado();
-        return;
-    }
-
-    perguntaAtual = perguntas[atual];
-
-    caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = "";
-
-    mostraAlternativas();
-}
-
-function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
-        const botaoAlternativas = document.createElement("button");
-
-        botaoAlternativas.textContent = alternativa.texto;
-
-        botaoAlternativas.addEventListener("click", () => {
-            respostaSelecionada(alternativa);
-        });
-
-        caixaAlternativas.appendChild(botaoAlternativas);
-    }
-}
-
-function respostaSelecionada(opcaoSelecionada) {
-    historiaFinal += opcaoSelecionada.afirmacao + " ";
-
-    atual++;
-
-    mostraPergunta();
-}
-
-function mostraResultado() {
-    caixaPerguntas.textContent = "Seu resultado sobre caça e pesca ilegal:";
-
-    textoResultado.textContent = historiaFinal;
-
-    caixaAlternativas.textContent = "";
-
-    caixaResultado.style.display = "block";
-}
-
-mostraPergunta();
-
     line-height: 1.7;
-
-    margin-bottom: 20px;
 }
+
+/* Botão para reiniciar */
 
 .botao-reiniciar {
-    padding: 13px 22px;
+    margin-top: 20px;
+    padding: 12px 20px;
 
-    border: none;
-
-    border-radius: 10px;
-
-    background: #24613b;
-
+    background-color: #1b4332;
     color: white;
 
-    font-size: 16px;
+    border: none;
+    border-radius: 8px;
 
+    font-size: 16px;
     font-weight: bold;
 
     cursor: pointer;
-
-    transition: background 0.3s, transform 0.2s;
 }
 
 .botao-reiniciar:hover {
-    background: #17482a;
-
-    transform: translateY(-2px);
+    background-color: #081c15;
 }
 
-footer {
-    text-align: center;
-
-    margin-top: 30px;
-
-    color: #66806d;
-
-    font-size: 14px;
-}
-
-/* Responsividade para celulares */
+/* Responsividade */
 
 @media (max-width: 600px) {
 
     body {
-        padding: 15px;
+        padding: 10px;
     }
 
     .caixa-principal {
-        padding: 22px;
-
-        border-radius: 18px;
+        padding: 20px;
     }
 
     .cabecalho h1 {
@@ -1086,14 +155,16 @@ footer {
     }
 
     .caixa-perguntas {
-        font-size: 18px;
-
-        padding: 20px;
+        font-size: 17px;
+        padding: 17px;
     }
 
     .caixa-alternativas button {
         font-size: 15px;
+        padding: 15px;
+    }
 
-        padding: 16px;
+    .caixa-resultado {
+        padding: 20px;
     }
 }
