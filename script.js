@@ -1,203 +1,392 @@
 const perguntas = [
-{
-pergunta: "A caça de animais silvestres sem autorização dos órgãos ambientais é considerada crime ambiental.",
-alternativas: [
-"Verdadeiro",
-"Falso"
-],
-correta: 0,
-explicacao:
-"Afirmativa verdadeira! A caça de animais silvestres sem autorização pode configurar crime ambiental, pois a legislação brasileira protege a fauna e estabelece regras para sua captura."
-},
 
 {
-    pergunta: "A pesca ilegal pode prejudicar os ecossistemas aquáticos e diminuir as populações de peixes.",
+    pergunta:
+        "A caça de animais silvestres sem autorização dos órgãos ambientais é considerada crime ambiental.",
+
     alternativas: [
         "Verdadeiro",
         "Falso"
     ],
-    correta: 0,
-    explicacao:
-        "Afirmativa verdadeira! A pesca realizada de maneira ilegal, especialmente durante períodos proibidos ou com métodos não permitidos, pode reduzir populações de peixes e desequilibrar os ecossistemas."
-}
 
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A fauna silvestre é protegida pela legislação ambiental. A caça sem autorização pode configurar crime ambiental."
+},
+
+{
+    pergunta:
+        "A pesca ilegal pode prejudicar os ecossistemas aquáticos e diminuir a quantidade de peixes.",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A pesca ilegal pode capturar peixes em excesso ou durante períodos proibidos, prejudicando a reprodução e o equilíbrio dos ecossistemas."
+}
 
 ];
 
 let perguntaAtual = 0;
+
 let pontuacao = 0;
+
 let respondeu = false;
 
-const perguntaElemento = document.getElementById("pergunta");
-const alternativasElemento = document.getElementById("alternativas");
-const numeroPergunta = document.getElementById("numero-pergunta");
-const barraProgresso = document.getElementById("barra-progresso");
+/* ELEMENTOS DA PÁGINA */
 
-const feedback = document.getElementById("feedback");
-const feedbackIcone = document.getElementById("feedback-icone");
-const feedbackTitulo = document.getElementById("feedback-titulo");
-const feedbackTexto = document.getElementById("feedback-texto");
+const perguntaElemento =
+document.getElementById("pergunta");
 
-const botaoProximo = document.getElementById("botao-proximo");
+const alternativasElemento =
+document.getElementById("alternativas");
 
-const caixaQuiz = document.querySelector(".caixa-quiz");
-const resultado = document.getElementById("resultado");
-const pontuacaoElemento = document.getElementById("pontuacao");
-const textoResultado = document.getElementById("texto-resultado");
+const contadorElemento =
+document.getElementById("contador");
+
+const barraProgresso =
+document.getElementById("barraProgresso");
+
+const feedback =
+document.getElementById("feedback");
+
+const feedbackIcone =
+document.getElementById("feedbackIcone");
+
+const feedbackTitulo =
+document.getElementById("feedbackTitulo");
+
+const feedbackTexto =
+document.getElementById("feedbackTexto");
+
+const btnProximo =
+document.getElementById("btnProximo");
+
+const resultado =
+document.getElementById("resultado");
+
+const pontuacaoElemento =
+document.getElementById("pontuacao");
+
+const mensagemElemento =
+document.getElementById("mensagem");
+
+/* CARREGAR PERGUNTA */
 
 function carregarPergunta() {
 
 respondeu = false;
 
-const atual = perguntas[perguntaAtual];
+const pergunta = perguntas[perguntaAtual];
 
-perguntaElemento.textContent = atual.pergunta;
 
-numeroPergunta.textContent =
+perguntaElemento.textContent =
+    pergunta.pergunta;
+
+
+contadorElemento.textContent =
     `${perguntaAtual + 1} / ${perguntas.length}`;
 
+
+const progresso =
+    ((perguntaAtual + 1) / perguntas.length) * 100;
+
+
 barraProgresso.style.width =
-    `${((perguntaAtual + 1) / perguntas.length) * 100}%`;
+    progresso + "%";
+
 
 alternativasElemento.innerHTML = "";
 
+
 feedback.className = "feedback";
+
 feedbackIcone.textContent = "";
+
 feedbackTitulo.textContent = "";
+
 feedbackTexto.textContent = "";
 
-botaoProximo.classList.remove("mostrar");
 
-atual.alternativas.forEach((alternativa, indice) => {
+btnProximo.classList.remove("mostrar");
 
-    const botao = document.createElement("button");
 
-    botao.classList.add("alternativa");
-    botao.textContent = alternativa;
+pergunta.alternativas.forEach(
+    function (alternativa, indice) {
 
-    botao.addEventListener("click", () => {
-        verificarResposta(indice, botao);
-    });
+        const botao =
+            document.createElement("button");
 
-    alternativasElemento.appendChild(botao);
-});
 
+        botao.className =
+            "alternativa";
+
+
+        botao.textContent =
+            alternativa;
+
+
+        botao.addEventListener(
+            "click",
+            function () {
+
+                verificarResposta(
+                    indice,
+                    botao
+                );
+
+            }
+        );
+
+
+        alternativasElemento.appendChild(
+            botao
+        );
+
+    }
+);
 
 }
 
-function verificarResposta(indice, botaoSelecionado) {
+/* VERIFICAR RESPOSTA */
+
+function verificarResposta(
+indice,
+botaoSelecionado
+) {
 
 if (respondeu) {
     return;
 }
 
+
 respondeu = true;
 
-const atual = perguntas[perguntaAtual];
-const botoes = document.querySelectorAll(".alternativa");
 
-botoes.forEach(botao => {
-    botao.style.pointerEvents = "none";
-});
+const pergunta =
+    perguntas[perguntaAtual];
 
-if (indice === atual.correta) {
+
+const botoes =
+    document.querySelectorAll(
+        ".alternativa"
+    );
+
+
+botoes.forEach(
+    function (botao) {
+
+        botao.style.pointerEvents =
+            "none";
+
+    }
+);
+
+
+if (indice === pergunta.correta) {
 
     pontuacao++;
 
-    botaoSelecionado.classList.add("correta");
 
-    feedback.className = "feedback correto";
-    feedbackIcone.textContent = "✅";
-    feedbackTitulo.textContent = "Muito bem! Você acertou!";
-    feedbackTexto.textContent = atual.explicacao;
-
-} else {
-
-    botaoSelecionado.classList.add("errada");
-
-    botoes[atual.correta].classList.add("correta");
-
-    feedback.className = "feedback errado";
-    feedbackIcone.textContent = "💡";
-    feedbackTitulo.textContent = "Quase! Veja a explicação:";
-    feedbackTexto.textContent = atual.explicacao;
-}
-
-if (perguntaAtual === perguntas.length - 1) {
-    botaoProximo.textContent = "Ver resultado 🌱";
-} else {
-    botaoProximo.textContent = "Próxima afirmativa →";
-}
-
-botaoProximo.classList.add("mostrar");
+    botaoSelecionado.classList.add(
+        "correta"
+    );
 
 
-}
+    feedback.className =
+        "feedback correto";
 
-botaoProximo.addEventListener("click", () => {
 
-if (!respondeu) {
-    return;
-}
+    feedbackIcone.textContent =
+        "✅";
 
-perguntaAtual++;
 
-if (perguntaAtual < perguntas.length) {
+    feedbackTitulo.textContent =
+        "Muito bem! Você acertou!";
 
-    carregarPergunta();
+
+    feedbackTexto.textContent =
+        pergunta.explicacao;
 
 } else {
 
-    mostrarResultado();
+    botaoSelecionado.classList.add(
+        "errada"
+    );
+
+
+    botoes[pergunta.correta]
+        .classList.add("correta");
+
+
+    feedback.className =
+        "feedback errado";
+
+
+    feedbackIcone.textContent =
+        "💡";
+
+
+    feedbackTitulo.textContent =
+        "Veja a explicação:";
+
+
+    feedbackTexto.textContent =
+        pergunta.explicacao;
+
 }
 
 
-});
+btnProximo.classList.add(
+    "mostrar"
+);
+
+
+if (
+    perguntaAtual ===
+    perguntas.length - 1
+) {
+
+    btnProximo.innerHTML =
+        'Ver resultado <span>✓</span>';
+
+} else {
+
+    btnProximo.innerHTML =
+        'Próxima afirmativa <span>→</span>';
+
+}
+
+}
+
+/* PRÓXIMA PERGUNTA */
+
+btnProximo.addEventListener(
+"click",
+function () {
+
+    perguntaAtual++;
+
+
+    if (
+        perguntaAtual <
+        perguntas.length
+    ) {
+
+        carregarPergunta();
+
+    } else {
+
+        mostrarResultado();
+
+    }
+
+}
+
+);
+
+/* MOSTRAR RESULTADO */
 
 function mostrarResultado() {
 
-document.querySelector(".progresso").style.display = "none";
-document.querySelector(".caixa-perguntas").style.display = "none";
-alternativasElemento.style.display = "none";
-feedback.style.display = "none";
-botaoProximo.style.display = "none";
+document.querySelector(
+    ".topo-quiz"
+).style.display = "none";
 
-resultado.style.display = "block";
+
+document.querySelector(
+    ".barra"
+).style.display = "none";
+
+
+document.querySelector(
+    ".pergunta"
+).style.display = "none";
+
+
+alternativasElemento.style.display =
+    "none";
+
+
+feedback.style.display =
+    "none";
+
+
+btnProximo.style.display =
+    "none";
+
+
+resultado.style.display =
+    "block";
+
 
 pontuacaoElemento.textContent =
-    `${pontuacao} de ${perguntas.length} afirmativas corretas`;
+    `${pontuacao} de ${perguntas.length} acertos`;
 
-if (pontuacao === perguntas.length) {
 
-    textoResultado.textContent =
-        "Excelente! 🌿 Você demonstrou que conhece a importância de proteger a fauna e os ambientes naturais.";
+if (pontuacao === 2) {
+
+    mensagemElemento.textContent =
+        "Excelente! 🌿 Você demonstrou que entende a importância de proteger os animais e preservar os ambientes naturais.";
 
 } else if (pontuacao === 1) {
 
-    textoResultado.textContent =
-        "Muito bem! 🌱 Você acertou uma afirmativa. Continue aprendendo sobre a preservação da natureza.";
+    mensagemElemento.textContent =
+        "Muito bem! 🌱 Você acertou uma das afirmativas. Continue aprendendo sobre a preservação da natureza.";
 
 } else {
 
-    textoResultado.textContent =
-        "Continue estudando! 🐾 Conhecer a legislação ambiental é um passo importante para ajudar na proteção da natureza.";
-}
-
+    mensagemElemento.textContent =
+        "Continue estudando! 🐾 Conhecer os problemas ambientais é um passo importante para ajudar a proteger a natureza.";
 
 }
+
+}
+
+/* REINICIAR */
 
 function reiniciarQuiz() {
 
 perguntaAtual = 0;
+
 pontuacao = 0;
 
-document.querySelector(".progresso").style.display = "block";
-document.querySelector(".caixa-perguntas").style.display = "block";
-alternativasElemento.style.display = "grid";
+document.querySelector(
+    ".topo-quiz"
+).style.display = "flex";
+
+
+document.querySelector(
+    ".barra"
+).style.display = "block";
+
+
+document.querySelector(
+    ".pergunta"
+).style.display = "block";
+
+
+alternativasElemento.style.display =
+    "grid";
+
+
+resultado.style.display =
+    "none";
+
+
+btnProximo.style.display =
+    "none";
+
 
 carregarPergunta();
 
-
 }
+
+/* INICIAR */
 
 carregarPergunta();

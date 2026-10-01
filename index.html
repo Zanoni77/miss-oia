@@ -1,80 +1,149 @@
-<main class="caixa-principal">
+<!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caça e Pesca Ilegal</title>
 
-    <div class="folha folha1">🍃</div>
-    <div class="folha folha2">🌿</div>
-    <div class="folha folha3">🍂</div>
+<link rel="stylesheet" href="style.css">
+
+</head> <body>
+<main class="container">
 
     <header class="cabecalho">
-        <span class="tag">🌎 EDUCAÇÃO AMBIENTAL</span>
 
-        <h1>Caça e Pesca <span>Ilegal</span></h1>
+        <div class="icone">
+            🌿
+        </div>
 
-        <p>
-            Descubra informações importantes sobre a proteção da fauna
-            e os impactos dos crimes ambientais.
+        <p class="subtitulo">QUIZ AMBIENTAL</p>
+
+        <h1>
+            Caça e Pesca
+            <span>Ilegal</span>
+        </h1>
+
+        <p class="descricao">
+            Teste seus conhecimentos sobre a preservação da fauna
+            e a importância de combater crimes ambientais.
         </p>
+
     </header>
 
-    <section class="caixa-quiz">
 
-        <div class="progresso">
-            <div class="progresso-texto">
-                <span>AFIRMATIVA</span>
-                <strong id="numero-pergunta">1 / 2</strong>
-            </div>
+    <section class="quiz">
 
-            <div class="barra">
-                <div class="barra-preenchida" id="barra-progresso"></div>
+        <div class="topo-quiz">
+
+            <span>CONHECIMENTO AMBIENTAL</span>
+
+            <strong id="contador">
+                1 / 2
+            </strong>
+
+        </div>
+
+
+        <div class="barra">
+            <div
+                class="barra-progresso"
+                id="barraProgresso">
             </div>
         </div>
 
-        <div class="caixa-perguntas">
-            <span class="icone-pergunta">🌳</span>
+
+        <div class="pergunta">
+
+            <div class="numero">
+                🌳
+            </div>
 
             <h2 id="pergunta">
-                Carregando afirmativa...
+                Carregando pergunta...
             </h2>
+
         </div>
 
-        <div class="caixa-alternativas" id="alternativas">
-            <!-- Alternativas criadas pelo JavaScript -->
+
+        <div
+            class="alternativas"
+            id="alternativas">
         </div>
 
-        <div class="feedback" id="feedback">
-            <div class="feedback-icone" id="feedback-icone"></div>
+
+        <div
+            class="feedback"
+            id="feedback">
+
+            <div
+                class="feedback-icone"
+                id="feedbackIcone">
+            </div>
 
             <div>
-                <h3 id="feedback-titulo"></h3>
-                <p id="feedback-texto"></p>
+
+                <h3 id="feedbackTitulo"></h3>
+
+                <p id="feedbackTexto"></p>
+
             </div>
+
         </div>
 
-        <button class="botao-proximo" id="botao-proximo">
-            Próxima afirmativa →
+
+        <button
+            class="btn-proximo"
+            id="btnProximo">
+
+            Próxima afirmativa
+            <span>→</span>
+
         </button>
 
-        <div class="caixa-resultado" id="resultado">
 
-            <div class="trofeu">🌱</div>
+        <div
+            class="resultado"
+            id="resultado">
 
-            <h2>Quiz concluído!</h2>
+            <div class="resultado-icone">
+                🌱
+            </div>
 
-            <p class="pontuacao" id="pontuacao"></p>
+            <h2>
+                Quiz finalizado!
+            </h2>
 
-            <p class="texto-resultado" id="texto-resultado"></p>
+            <p
+                class="pontuacao"
+                id="pontuacao">
+            </p>
 
-            <button class="botao-reiniciar" onclick="reiniciarQuiz()">
-                🔄 Fazer o quiz novamente
+            <p
+                class="mensagem"
+                id="mensagem">
+            </p>
+
+            <button
+                class="btn-reiniciar"
+                onclick="reiniciarQuiz()">
+
+                🔄 Fazer novamente
+
             </button>
 
         </div>
 
     </section>
 
+
     <footer>
-        <p>🌱 Preserve a natureza. Proteja os animais.</p>
+
+        <p>
+            🌎 Preserve a natureza.
+            <strong>Proteja os animais.</strong>
+        </p>
+
     </footer>
 
 </main>
 
+
 <script src="script.js"></script>
+
+</body> </html>
