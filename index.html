@@ -1,61 +1,80 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<main class="caixa-principal">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="folha folha1">🍃</div>
+    <div class="folha folha2">🌿</div>
+    <div class="folha folha3">🍂</div>
 
-    <title>Caça e Pesca Ilegal</title>
+    <header class="cabecalho">
+        <span class="tag">🌎 EDUCAÇÃO AMBIENTAL</span>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+        <h1>Caça e Pesca <span>Ilegal</span></h1>
 
-<body>
+        <p>
+            Descubra informações importantes sobre a proteção da fauna
+            e os impactos dos crimes ambientais.
+        </p>
+    </header>
 
-    <main class="caixa-principal">
+    <section class="caixa-quiz">
 
-        <header class="cabecalho">
-            <h1>🌳 Caça e Pesca Ilegal</h1>
-            <p>
-                Teste seus conhecimentos sobre a preservação da fauna
-                e a importância de combater crimes ambientais.
-            </p>
-        </header>
-
-        <section class="caixa-quiz">
-
-            <div class="caixa-perguntas">
-                <!-- A pergunta será inserida pelo JavaScript -->
+        <div class="progresso">
+            <div class="progresso-texto">
+                <span>AFIRMATIVA</span>
+                <strong id="numero-pergunta">1 / 2</strong>
             </div>
 
-            <div class="caixa-alternativas">
-                <!-- As alternativas serão inseridas pelo JavaScript -->
+            <div class="barra">
+                <div class="barra-preenchida" id="barra-progresso"></div>
             </div>
+        </div>
 
-            <div class="caixa-resultado">
-                <h2>Resultado</h2>
+        <div class="caixa-perguntas">
+            <span class="icone-pergunta">🌳</span>
 
-                <p class="texto-resultado">
-                    <!-- O resultado será inserido pelo JavaScript -->
-                </p>
+            <h2 id="pergunta">
+                Carregando afirmativa...
+            </h2>
+        </div>
 
-                <button class="botao-reiniciar" onclick="location.reload()">
-                    🔄 Fazer o quiz novamente
-                </button>
+        <div class="caixa-alternativas" id="alternativas">
+            <!-- Alternativas criadas pelo JavaScript -->
+        </div>
+
+        <div class="feedback" id="feedback">
+            <div class="feedback-icone" id="feedback-icone"></div>
+
+            <div>
+                <h3 id="feedback-titulo"></h3>
+                <p id="feedback-texto"></p>
             </div>
+        </div>
 
-        </section>
+        <button class="botao-proximo" id="botao-proximo">
+            Próxima afirmativa →
+        </button>
 
-        <footer>
-            <p>
-                🌱 Preserve a natureza. Proteja os animais.
-            </p>
-        </footer>
+        <div class="caixa-resultado" id="resultado">
 
-    </main>
+            <div class="trofeu">🌱</div>
 
-    <script src="script.js"></script>
+            <h2>Quiz concluído!</h2>
 
-</body>
+            <p class="pontuacao" id="pontuacao"></p>
 
-</html>
+            <p class="texto-resultado" id="texto-resultado"></p>
+
+            <button class="botao-reiniciar" onclick="reiniciarQuiz()">
+                🔄 Fazer o quiz novamente
+            </button>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>🌱 Preserve a natureza. Proteja os animais.</p>
+    </footer>
+
+</main>
+
+<script src="script.js"></script>
