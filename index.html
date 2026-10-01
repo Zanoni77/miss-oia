@@ -1,54 +1,70 @@
 <!DOCTYPE html> <html lang="pt-BR"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Caça e Pesca Ilegal</title>
+<title>EcoQuiz - Caça e Pesca Ilegal</title>
 
 <link rel="stylesheet" href="style.css">
-
 </head> <body>
+<div class="particula p1">🍃</div>
+<div class="particula p2">🌿</div>
+<div class="particula p3">🍂</div>
+
 <main class="container">
 
     <header class="cabecalho">
 
-        <div class="icone">
-            🌿
+        <div class="logo">
+            🌎
         </div>
 
-        <p class="subtitulo">
-            QUIZ AMBIENTAL
-        </p>
+        <span class="tag">
+            ECOQUIZ
+        </span>
 
         <h1>
             Caça e Pesca
             <span>Ilegal</span>
         </h1>
 
-        <p class="descricao">
-            Teste seus conhecimentos sobre a preservação da fauna
-            e a importância de combater crimes ambientais.
+        <p>
+            Teste seus conhecimentos e descubra como proteger
+            a fauna e preservar nossos ecossistemas.
         </p>
 
     </header>
 
 
-    <section class="quiz">
+    <section class="quiz" id="quiz">
 
-        <div class="topo-quiz">
+        <div class="informacoes">
 
-            <span>
-                CONHECIMENTO AMBIENTAL
-            </span>
+            <div class="info">
+                <span>PERGUNTA</span>
+                <strong id="contador">1 / 10</strong>
+            </div>
 
-            <strong id="contador">
-                1 / 2
-            </strong>
+            <div class="info direita">
+                <span>PONTOS</span>
+                <strong id="pontos">0</strong>
+            </div>
 
         </div>
 
 
         <div class="barra">
-
             <div
-                class="barra-progresso"
-                id="barraProgresso">
+                class="progresso"
+                id="progresso">
+            </div>
+        </div>
+
+
+        <div class="vidas">
+
+            <span>🌱 Progresso ambiental</span>
+
+            <div>
+                <span id="vida1">💚</span>
+                <span id="vida2">💚</span>
+                <span id="vida3">💚</span>
             </div>
 
         </div>
@@ -56,9 +72,13 @@
 
         <div class="pergunta">
 
-            <div class="numero">
-                🌳
+            <div class="icone-pergunta">
+                🐾
             </div>
+
+            <span class="categoria" id="categoria">
+                FAUNA
+            </span>
 
             <h2 id="pergunta">
                 Carregando pergunta...
@@ -78,15 +98,17 @@
             id="feedback">
 
             <div
-                class="feedback-icone"
-                id="feedbackIcone">
+                class="feedback-icon"
+                id="feedbackIcon">
             </div>
 
             <div>
 
-                <h3 id="feedbackTitulo"></h3>
+                <h3 id="feedbackTitulo">
+                </h3>
 
-                <p id="feedbackTexto"></p>
+                <p id="feedbackTexto">
+                </p>
 
             </div>
 
@@ -94,11 +116,13 @@
 
 
         <button
+            type="button"
             class="btn-proximo"
             id="btnProximo">
 
-            Próxima afirmativa →
-            
+            Próxima pergunta
+            <span>→</span>
+
         </button>
 
 
@@ -106,18 +130,57 @@
             class="resultado"
             id="resultado">
 
-            <div class="resultado-icone">
-                🌱
+            <div class="trofeu">
+                🏆
             </div>
 
+            <span class="tag">
+                RESULTADO FINAL
+            </span>
+
             <h2>
-                Quiz finalizado!
+                Quiz concluído!
             </h2>
 
-            <p
-                class="pontuacao"
-                id="pontuacao">
-            </p>
+            <div
+                class="pontuacao-final"
+                id="pontuacaoFinal">
+                0 / 10
+            </div>
+
+            <div class="estatisticas">
+
+                <div>
+                    <strong id="acertos">
+                        0
+                    </strong>
+
+                    <span>
+                        Acertos
+                    </span>
+                </div>
+
+                <div>
+                    <strong id="erros">
+                        0
+                    </strong>
+
+                    <span>
+                        Erros
+                    </span>
+                </div>
+
+                <div>
+                    <strong id="porcentagem">
+                        0%
+                    </strong>
+
+                    <span>
+                        Aproveitamento
+                    </span>
+                </div>
+
+            </div>
 
             <p
                 class="mensagem"
@@ -125,10 +188,11 @@
             </p>
 
             <button
+                type="button"
                 class="btn-reiniciar"
-                onclick="reiniciarQuiz()">
+                id="btnReiniciar">
 
-                🔄 Fazer novamente
+                🔄 Jogar novamente
 
             </button>
 
@@ -140,9 +204,12 @@
     <footer>
 
         <p>
-            🌎 Preserve a natureza.
-            <strong>Proteja os animais.</strong>
+            🌱 Cada atitude conta.
         </p>
+
+        <small>
+            Proteja a natureza. Proteja a vida.
+        </small>
 
     </footer>
 
@@ -150,5 +217,4 @@
 
 
 <script src="script.js"></script>
-
 </body> </html>

@@ -1,112 +1,352 @@
 const perguntas = [
-{
-pergunta: "A caça de animais silvestres sem autorização é considerada crime ambiental?",
-resposta: "Verdadeiro",
-explicacao: "Verdadeiro! Os animais silvestres são protegidos pela legislação ambiental. A caça sem autorização pode configurar crime ambiental."
-},
 
 {
-    pergunta: "A pesca ilegal pode prejudicar os ecossistemas aquáticos e diminuir a quantidade de peixes?",
-    resposta: "Verdadeiro",
-    explicacao: "Verdadeiro! A pesca ilegal pode retirar muitos animais do ambiente e prejudicar a reprodução dos peixes, causando desequilíbrio ambiental."
+    categoria: "FAUNA",
+
+    pergunta:
+        "A caça de animais silvestres sem autorização dos órgãos ambientais pode ser considerada crime ambiental?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A fauna silvestre é protegida pela legislação ambiental, e a caça sem autorização pode configurar crime ambiental."
+},
+
+
+{
+    categoria: "PESCA",
+
+    pergunta:
+        "A pesca ilegal pode diminuir as populações de peixes e prejudicar o equilíbrio dos ecossistemas aquáticos?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A retirada excessiva de peixes pode prejudicar a reprodução das espécies e desequilibrar o ambiente aquático."
+},
+
+
+{
+    categoria: "PESCA",
+
+    pergunta:
+        "Respeitar o período de reprodução dos peixes é uma forma de ajudar na preservação das espécies?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! Respeitar períodos de reprodução permite que os animais se reproduzam antes de serem capturados."
+},
+
+
+{
+    categoria: "FAUNA",
+
+    pergunta:
+        "A captura e o comércio ilegal de animais silvestres podem contribuir para a redução de suas populações?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A retirada de animais da natureza para comércio ilegal pode reduzir suas populações e prejudicar os ecossistemas."
+},
+
+
+{
+    categoria: "MEIO AMBIENTE",
+
+    pergunta:
+        "A preservação dos animais silvestres também contribui para o equilíbrio dos ecossistemas?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! Os animais participam de diversas relações ecológicas, como dispersão de sementes, polinização e controle de populações."
+},
+
+
+{
+    categoria: "PRESERVAÇÃO",
+
+    pergunta:
+        "Denunciar atividades de caça e pesca ilegais pode ajudar no combate aos crimes ambientais?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! Comunicar atividades suspeitas às autoridades ambientais pode contribuir para a fiscalização e proteção da fauna."
+},
+
+
+{
+    categoria: "CAÇA",
+
+    pergunta:
+        "A caça ilegal pode afetar apenas o animal capturado, sem causar consequências para o restante do ambiente?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 1,
+
+    explicacao:
+        "Falso! A retirada de animais pode afetar cadeias alimentares, relações ecológicas e o equilíbrio de todo o ecossistema."
+},
+
+
+{
+    categoria: "PESCA",
+
+    pergunta:
+        "Pescar utilizando métodos proibidos pode causar impactos negativos nos ambientes aquáticos?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! Métodos proibidos podem capturar animais de forma indiscriminada e causar danos ao ambiente."
+},
+
+
+{
+    categoria: "FAUNA",
+
+    pergunta:
+        "Todos os animais encontrados na natureza podem ser capturados livremente por qualquer pessoa?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 1,
+
+    explicacao:
+        "Falso! A captura de animais silvestres é regulamentada e, em diversas situações, é proibida sem autorização."
+},
+
+
+{
+    categoria: "PRESERVAÇÃO",
+
+    pergunta:
+        "A educação ambiental pode ajudar as pessoas a compreender a importância de proteger a fauna?",
+
+    alternativas: [
+        "Verdadeiro",
+        "Falso"
+    ],
+
+    correta: 0,
+
+    explicacao:
+        "Verdadeiro! A educação ambiental ajuda a conscientizar as pessoas sobre a importância da conservação da natureza."
 }
 
 ];
 
 let perguntaAtual = 0;
 let pontos = 0;
+let erros = 0;
 
-const pergunta = document.getElementById("pergunta");
-const alternativas = document.getElementById("alternativas");
-const contador = document.getElementById("contador");
-const barra = document.getElementById("barraProgresso");
+/* ELEMENTOS */
 
-const feedback = document.getElementById("feedback");
-const feedbackIcone = document.getElementById("feedbackIcone");
-const feedbackTitulo = document.getElementById("feedbackTitulo");
-const feedbackTexto = document.getElementById("feedbackTexto");
+const perguntaElemento =
+document.getElementById("pergunta");
 
-const btnProximo = document.getElementById("btnProximo");
+const alternativasElemento =
+document.getElementById("alternativas");
 
-const resultado = document.getElementById("resultado");
-const pontuacao = document.getElementById("pontuacao");
-const mensagem = document.getElementById("mensagem");
+const contadorElemento =
+document.getElementById("contador");
+
+const pontosElemento =
+document.getElementById("pontos");
+
+const progressoElemento =
+document.getElementById("progresso");
+
+const categoriaElemento =
+document.getElementById("categoria");
+
+const feedbackElemento =
+document.getElementById("feedback");
+
+const feedbackIcon =
+document.getElementById("feedbackIcon");
+
+const feedbackTitulo =
+document.getElementById("feedbackTitulo");
+
+const feedbackTexto =
+document.getElementById("feedbackTexto");
+
+const btnProximo =
+document.getElementById("btnProximo");
+
+const resultado =
+document.getElementById("resultado");
+
+const pontuacaoFinal =
+document.getElementById("pontuacaoFinal");
+
+const acertosElemento =
+document.getElementById("acertos");
+
+const errosElemento =
+document.getElementById("erros");
+
+const porcentagemElemento =
+document.getElementById("porcentagem");
+
+const mensagemElemento =
+document.getElementById("mensagem");
+
+const btnReiniciar =
+document.getElementById("btnReiniciar");
+
+/* CARREGAR PERGUNTA */
 
 function carregarPergunta() {
 
-const atual = perguntas[perguntaAtual];
+const atual =
+    perguntas[perguntaAtual];
 
 
-pergunta.textContent = atual.pergunta;
+perguntaElemento.textContent =
+    atual.pergunta;
 
 
-contador.textContent =
-    (perguntaAtual + 1) + " / " + perguntas.length;
+categoriaElemento.textContent =
+    atual.categoria;
 
 
-const progresso =
-    ((perguntaAtual + 1) / perguntas.length) * 100;
+contadorElemento.textContent =
+    (perguntaAtual + 1) +
+    " / " +
+    perguntas.length;
 
 
-barra.style.width =
-    progresso + "%";
+pontosElemento.textContent =
+    pontos;
 
 
-alternativas.innerHTML = "";
+const porcentagem =
+    ((perguntaAtual + 1) /
+    perguntas.length) * 100;
 
 
-feedback.className = "feedback";
-
-feedbackIcone.textContent = "";
-
-feedbackTitulo.textContent = "";
-
-feedbackTexto.textContent = "";
+progressoElemento.style.width =
+    porcentagem + "%";
 
 
-btnProximo.classList.remove("mostrar");
+alternativasElemento.innerHTML =
+    "";
 
 
-const opcoes = [
-    "Verdadeiro",
-    "Falso"
-];
+feedbackElemento.className =
+    "feedback";
 
 
-opcoes.forEach(function(opcao) {
-
-    const botao =
-        document.createElement("button");
+feedbackIcon.textContent =
+    "";
 
 
-    botao.className =
-        "alternativa";
+feedbackTitulo.textContent =
+    "";
 
 
-    botao.textContent =
-        opcao;
+feedbackTexto.textContent =
+    "";
 
 
-    botao.onclick = function() {
+btnProximo.classList.remove(
+    "mostrar"
+);
 
-        verificarResposta(
-            opcao,
+
+atual.alternativas.forEach(
+    function(alternativa, indice) {
+
+        const botao =
+            document.createElement(
+                "button"
+            );
+
+
+        botao.type = "button";
+
+
+        botao.className =
+            "alternativa";
+
+
+        botao.textContent =
+            alternativa;
+
+
+        botao.addEventListener(
+            "click",
+            function() {
+
+                verificarResposta(
+                    indice,
+                    botao
+                );
+
+            }
+        );
+
+
+        alternativasElemento.appendChild(
             botao
         );
 
-    };
-
-
-    alternativas.appendChild(
-        botao
-    );
-
-});
+    }
+);
 
 }
 
+/* VERIFICAR RESPOSTA */
+
 function verificarResposta(
-resposta,
+indice,
 botaoSelecionado
 ) {
 
@@ -120,16 +360,22 @@ const botoes =
     );
 
 
-botoes.forEach(function(botao) {
+botoes.forEach(
+    function(botao) {
 
-    botao.disabled = true;
+        botao.disabled = true;
 
-});
+    }
+);
 
 
-if (resposta === atual.resposta) {
+if (indice === atual.correta) {
 
     pontos++;
+
+
+    pontosElemento.textContent =
+        pontos;
 
 
     botaoSelecionado.classList.add(
@@ -137,16 +383,16 @@ if (resposta === atual.resposta) {
     );
 
 
-    feedback.className =
+    feedbackElemento.className =
         "feedback correto";
 
 
-    feedbackIcone.textContent =
-        "✅";
+    feedbackIcon.textContent =
+        "🎉";
 
 
     feedbackTitulo.textContent =
-        "Resposta correta!";
+        "Muito bem! Você acertou!";
 
 
     feedbackTexto.textContent =
@@ -154,41 +400,48 @@ if (resposta === atual.resposta) {
 
 } else {
 
+    erros++;
+
+
     botaoSelecionado.classList.add(
         "errada"
     );
 
 
-    feedback.className =
+    feedbackElemento.className =
         "feedback errado";
 
 
-    feedbackIcone.textContent =
-        "❌";
+    feedbackIcon.textContent =
+        "💡";
 
 
     feedbackTitulo.textContent =
-        "Resposta incorreta!";
+        "Não foi dessa vez!";
 
 
     feedbackTexto.textContent =
         atual.explicacao;
 
 
-    botoes.forEach(function(botao) {
+    botoes.forEach(
+        function(botao) {
 
-        if (
-            botao.textContent ===
-            atual.resposta
-        ) {
+            if (
+                botao.textContent ===
+                atual.alternativas[
+                    atual.correta
+                ]
+            ) {
 
-            botao.classList.add(
-                "correta"
-            );
+                botao.classList.add(
+                    "correta"
+                );
+
+            }
 
         }
-
-    });
+    );
 
 }
 
@@ -203,42 +456,50 @@ if (
     perguntas.length - 1
 ) {
 
-    btnProximo.textContent =
-        "Ver resultado ✓";
+    btnProximo.innerHTML =
+        "Ver resultado 🏆";
 
 } else {
 
-    btnProximo.textContent =
-        "Próxima afirmativa →";
+    btnProximo.innerHTML =
+        "Próxima pergunta →";
 
 }
 
 }
 
-btnProximo.onclick = function() {
+/* PRÓXIMA PERGUNTA */
 
-perguntaAtual++;
+btnProximo.addEventListener(
+"click",
+function() {
+
+    perguntaAtual++;
 
 
-if (
-    perguntaAtual <
-    perguntas.length
-) {
+    if (
+        perguntaAtual <
+        perguntas.length
+    ) {
 
-    carregarPergunta();
+        carregarPergunta();
 
-} else {
+    } else {
 
-    mostrarResultado();
+        mostrarResultado();
+
+    }
 
 }
 
-};
+);
+
+/* RESULTADO */
 
 function mostrarResultado() {
 
 document.querySelector(
-    ".topo-quiz"
+    ".informacoes"
 ).style.display = "none";
 
 
@@ -248,15 +509,20 @@ document.querySelector(
 
 
 document.querySelector(
+    ".vidas"
+).style.display = "none";
+
+
+document.querySelector(
     ".pergunta"
 ).style.display = "none";
 
 
-alternativas.style.display =
+alternativasElemento.style.display =
     "none";
 
 
-feedback.style.display =
+feedbackElemento.style.display =
     "none";
 
 
@@ -268,70 +534,105 @@ resultado.style.display =
     "block";
 
 
-pontuacao.textContent =
+pontuacaoFinal.textContent =
     pontos +
-    " de " +
-    perguntas.length +
-    " acertos";
+    " / " +
+    perguntas.length;
 
 
-if (pontos === 2) {
+acertosElemento.textContent =
+    pontos;
 
-    mensagem.textContent =
-        "🌿 Excelente! Você conhece a importância de proteger os animais e preservar a natureza.";
 
-} else if (pontos === 1) {
+errosElemento.textContent =
+    erros;
 
-    mensagem.textContent =
-        "🌱 Muito bem! Você acertou uma afirmativa. Continue aprendendo sobre a preservação ambiental.";
+
+const aproveitamento =
+    Math.round(
+        (pontos / perguntas.length) * 100
+    );
+
+
+porcentagemElemento.textContent =
+    aproveitamento + "%";
+
+
+if (aproveitamento === 100) {
+
+    mensagemElemento.textContent =
+        "🌳 Perfeito! Você acertou todas as perguntas e demonstrou excelente conhecimento sobre a preservação ambiental.";
+
+} else if (aproveitamento >= 70) {
+
+    mensagemElemento.textContent =
+        "🌿 Muito bom! Você mostrou um ótimo conhecimento sobre a proteção da fauna e dos ambientes naturais.";
+
+} else if (aproveitamento >= 50) {
+
+    mensagemElemento.textContent =
+        "🌱 Bom trabalho! Você já conhece vários conceitos importantes. Continue aprendendo.";
 
 } else {
 
-    mensagem.textContent =
-        "🐾 Continue estudando! Conhecer os problemas ambientais é importante para proteger a natureza.";
+    mensagemElemento.textContent =
+        "🐾 Continue estudando! Conhecer a importância da preservação é o primeiro passo para proteger a natureza.";
 
 }
 
 }
 
-function reiniciarQuiz() {
+/* REINICIAR */
 
-perguntaAtual = 0;
+btnReiniciar.addEventListener(
+"click",
+function() {
 
-pontos = 0;
+    perguntaAtual = 0;
 
+    pontos = 0;
 
-document.querySelector(
-    ".topo-quiz"
-).style.display = "flex";
-
-
-document.querySelector(
-    ".barra"
-).style.display = "block";
+    erros = 0;
 
 
-document.querySelector(
-    ".pergunta"
-).style.display = "block";
+    document.querySelector(
+        ".informacoes"
+    ).style.display = "flex";
 
 
-alternativas.style.display =
-    "grid";
+    document.querySelector(
+        ".barra"
+    ).style.display = "block";
 
 
-resultado.style.display =
-    "none";
+    document.querySelector(
+        ".vidas"
+    ).style.display = "flex";
 
 
-btnProximo.style.display =
-    "none";
+    document.querySelector(
+        ".pergunta"
+    ).style.display = "block";
 
 
-carregarPergunta();
+    alternativasElemento.style.display =
+        "grid";
+
+
+    resultado.style.display =
+        "none";
+
+
+    btnProximo.style.display =
+        "none";
+
+
+    carregarPergunta();
 
 }
 
-/* INICIA O QUIZ */
+);
+
+/* COMEÇAR */
 
 carregarPergunta();
