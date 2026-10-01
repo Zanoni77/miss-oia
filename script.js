@@ -1,107 +1,58 @@
 const perguntas = [
-
 {
-    pergunta:
-        "A caça de animais silvestres sem autorização dos órgãos ambientais é considerada crime ambiental.",
-
-    alternativas: [
-        "Verdadeiro",
-        "Falso"
-    ],
-
-    correta: 0,
-
-    explicacao:
-        "Verdadeiro! A fauna silvestre é protegida pela legislação ambiental. A caça sem autorização pode configurar crime ambiental."
+pergunta: "A caça de animais silvestres sem autorização é considerada crime ambiental?",
+resposta: "Verdadeiro",
+explicacao: "Verdadeiro! Os animais silvestres são protegidos pela legislação ambiental. A caça sem autorização pode configurar crime ambiental."
 },
 
 {
-    pergunta:
-        "A pesca ilegal pode prejudicar os ecossistemas aquáticos e diminuir a quantidade de peixes.",
-
-    alternativas: [
-        "Verdadeiro",
-        "Falso"
-    ],
-
-    correta: 0,
-
-    explicacao:
-        "Verdadeiro! A pesca ilegal pode capturar peixes em excesso ou durante períodos proibidos, prejudicando a reprodução e o equilíbrio dos ecossistemas."
+    pergunta: "A pesca ilegal pode prejudicar os ecossistemas aquáticos e diminuir a quantidade de peixes?",
+    resposta: "Verdadeiro",
+    explicacao: "Verdadeiro! A pesca ilegal pode retirar muitos animais do ambiente e prejudicar a reprodução dos peixes, causando desequilíbrio ambiental."
 }
 
 ];
 
 let perguntaAtual = 0;
+let pontos = 0;
 
-let pontuacao = 0;
+const pergunta = document.getElementById("pergunta");
+const alternativas = document.getElementById("alternativas");
+const contador = document.getElementById("contador");
+const barra = document.getElementById("barraProgresso");
 
-let respondeu = false;
+const feedback = document.getElementById("feedback");
+const feedbackIcone = document.getElementById("feedbackIcone");
+const feedbackTitulo = document.getElementById("feedbackTitulo");
+const feedbackTexto = document.getElementById("feedbackTexto");
 
-/* ELEMENTOS DA PÁGINA */
+const btnProximo = document.getElementById("btnProximo");
 
-const perguntaElemento =
-document.getElementById("pergunta");
-
-const alternativasElemento =
-document.getElementById("alternativas");
-
-const contadorElemento =
-document.getElementById("contador");
-
-const barraProgresso =
-document.getElementById("barraProgresso");
-
-const feedback =
-document.getElementById("feedback");
-
-const feedbackIcone =
-document.getElementById("feedbackIcone");
-
-const feedbackTitulo =
-document.getElementById("feedbackTitulo");
-
-const feedbackTexto =
-document.getElementById("feedbackTexto");
-
-const btnProximo =
-document.getElementById("btnProximo");
-
-const resultado =
-document.getElementById("resultado");
-
-const pontuacaoElemento =
-document.getElementById("pontuacao");
-
-const mensagemElemento =
-document.getElementById("mensagem");
-
-/* CARREGAR PERGUNTA */
+const resultado = document.getElementById("resultado");
+const pontuacao = document.getElementById("pontuacao");
+const mensagem = document.getElementById("mensagem");
 
 function carregarPergunta() {
 
-respondeu = false;
-
-const pergunta = perguntas[perguntaAtual];
+const atual = perguntas[perguntaAtual];
 
 
-perguntaElemento.textContent =
-    pergunta.pergunta;
+pergunta.textContent = atual.pergunta;
 
 
-contadorElemento.textContent =
-    `${perguntaAtual + 1} / ${perguntas.length}`;
+contador.textContent =
+    (perguntaAtual + 1) + " / " + perguntas.length;
 
 
 const progresso =
     ((perguntaAtual + 1) / perguntas.length) * 100;
 
 
-barraProgresso.style.width =
+barra.style.width =
     progresso + "%";
 
 
-alternativasElemento.innerHTML = "";
+alternativas.innerHTML = "";
 
 
 feedback.className = "feedback";
@@ -116,59 +67,50 @@ feedbackTexto.textContent = "";
 btnProximo.classList.remove("mostrar");
 
 
-pergunta.alternativas.forEach(
-    function (alternativa, indice) {
-
-        const botao =
-            document.createElement("button");
-
-
-        botao.className =
-            "alternativa";
+const opcoes = [
+    "Verdadeiro",
+    "Falso"
+];
 
 
-        botao.textContent =
-            alternativa;
+opcoes.forEach(function(opcao) {
+
+    const botao =
+        document.createElement("button");
 
 
-        botao.addEventListener(
-            "click",
-            function () {
-
-                verificarResposta(
-                    indice,
-                    botao
-                );
-
-            }
-        );
+    botao.className =
+        "alternativa";
 
 
-        alternativasElemento.appendChild(
+    botao.textContent =
+        opcao;
+
+
+    botao.onclick = function() {
+
+        verificarResposta(
+            opcao,
             botao
         );
 
-    }
-);
+    };
+
+
+    alternativas.appendChild(
+        botao
+    );
+
+});
 
 }
 
-/* VERIFICAR RESPOSTA */
-
 function verificarResposta(
-indice,
+resposta,
 botaoSelecionado
 ) {
 
-if (respondeu) {
-    return;
-}
-
-
-respondeu = true;
-
-
-const pergunta =
+const atual =
     perguntas[perguntaAtual];
 
 
@@ -178,19 +120,16 @@ const botoes =
     );
 
 
-botoes.forEach(
-    function (botao) {
+botoes.forEach(function(botao) {
 
-        botao.style.pointerEvents =
-            "none";
+    botao.disabled = true;
 
-    }
-);
+});
 
 
-if (indice === pergunta.correta) {
+if (resposta === atual.resposta) {
 
-    pontuacao++;
+    pontos++;
 
 
     botaoSelecionado.classList.add(
@@ -207,11 +146,11 @@ if (indice === pergunta.correta) {
 
 
     feedbackTitulo.textContent =
-        "Muito bem! Você acertou!";
+        "Resposta correta!";
 
 
     feedbackTexto.textContent =
-        pergunta.explicacao;
+        atual.explicacao;
 
 } else {
 
@@ -220,24 +159,36 @@ if (indice === pergunta.correta) {
     );
 
 
-    botoes[pergunta.correta]
-        .classList.add("correta");
-
-
     feedback.className =
         "feedback errado";
 
 
     feedbackIcone.textContent =
-        "💡";
+        "❌";
 
 
     feedbackTitulo.textContent =
-        "Veja a explicação:";
+        "Resposta incorreta!";
 
 
     feedbackTexto.textContent =
-        pergunta.explicacao;
+        atual.explicacao;
+
+
+    botoes.forEach(function(botao) {
+
+        if (
+            botao.textContent ===
+            atual.resposta
+        ) {
+
+            botao.classList.add(
+                "correta"
+            );
+
+        }
+
+    });
 
 }
 
@@ -252,45 +203,37 @@ if (
     perguntas.length - 1
 ) {
 
-    btnProximo.innerHTML =
-        'Ver resultado <span>✓</span>';
+    btnProximo.textContent =
+        "Ver resultado ✓";
 
 } else {
 
-    btnProximo.innerHTML =
-        'Próxima afirmativa <span>→</span>';
+    btnProximo.textContent =
+        "Próxima afirmativa →";
 
 }
 
 }
 
-/* PRÓXIMA PERGUNTA */
+btnProximo.onclick = function() {
 
-btnProximo.addEventListener(
-"click",
-function () {
-
-    perguntaAtual++;
+perguntaAtual++;
 
 
-    if (
-        perguntaAtual <
-        perguntas.length
-    ) {
+if (
+    perguntaAtual <
+    perguntas.length
+) {
 
-        carregarPergunta();
+    carregarPergunta();
 
-    } else {
+} else {
 
-        mostrarResultado();
-
-    }
+    mostrarResultado();
 
 }
 
-);
-
-/* MOSTRAR RESULTADO */
+};
 
 function mostrarResultado() {
 
@@ -309,7 +252,7 @@ document.querySelector(
 ).style.display = "none";
 
 
-alternativasElemento.style.display =
+alternativas.style.display =
     "none";
 
 
@@ -325,36 +268,38 @@ resultado.style.display =
     "block";
 
 
-pontuacaoElemento.textContent =
-    `${pontuacao} de ${perguntas.length} acertos`;
+pontuacao.textContent =
+    pontos +
+    " de " +
+    perguntas.length +
+    " acertos";
 
 
-if (pontuacao === 2) {
+if (pontos === 2) {
 
-    mensagemElemento.textContent =
-        "Excelente! 🌿 Você demonstrou que entende a importância de proteger os animais e preservar os ambientes naturais.";
+    mensagem.textContent =
+        "🌿 Excelente! Você conhece a importância de proteger os animais e preservar a natureza.";
 
-} else if (pontuacao === 1) {
+} else if (pontos === 1) {
 
-    mensagemElemento.textContent =
-        "Muito bem! 🌱 Você acertou uma das afirmativas. Continue aprendendo sobre a preservação da natureza.";
+    mensagem.textContent =
+        "🌱 Muito bem! Você acertou uma afirmativa. Continue aprendendo sobre a preservação ambiental.";
 
 } else {
 
-    mensagemElemento.textContent =
-        "Continue estudando! 🐾 Conhecer os problemas ambientais é um passo importante para ajudar a proteger a natureza.";
+    mensagem.textContent =
+        "🐾 Continue estudando! Conhecer os problemas ambientais é importante para proteger a natureza.";
 
 }
 
 }
-
-/* REINICIAR */
 
 function reiniciarQuiz() {
 
 perguntaAtual = 0;
 
-pontuacao = 0;
+pontos = 0;
+
 
 document.querySelector(
     ".topo-quiz"
@@ -371,7 +316,7 @@ document.querySelector(
 ).style.display = "block";
 
 
-alternativasElemento.style.display =
+alternativas.style.display =
     "grid";
 
 
@@ -387,6 +332,6 @@ carregarPergunta();
 
 }
 
-/* INICIAR */
+/* INICIA O QUIZ */
 
 carregarPergunta();
