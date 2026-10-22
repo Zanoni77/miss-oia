@@ -1,6 +1,6 @@
 export const perguntas = [
     {
-        enunciado: "A caça ilegal pode ameaçar diversas espécies de animais e prejudicar o equilíbrio dos ecossistemas. O que deve ser feito ao presenciar uma situação de caça ilegal?",
+        enunciado: "A caça de animais silvestres sem autorização dos órgãos ambientais pode ser considerada crime ambiental?"
         alternativas: [
             {
                 texto: "Denunciar a situação às autoridades responsáveis e evitar participar da atividade.",
@@ -16,7 +16,7 @@ export const perguntas = [
     },
 
     {
-        enunciado: "A pesca predatória pode reduzir a quantidade de peixes e causar impactos em rios, lagos e mares. Qual atitude contribui para uma pesca mais sustentável?",
+        enunciado:"A pesca ilegal pode diminuir as populações de peixes e prejudicar o equilíbrio dos ecossistemas aquáticos?
         alternativas: [
             {
                 texto: "Respeitar os períodos de reprodução, os tamanhos permitidos e os limites de captura.",
@@ -34,7 +34,7 @@ export const perguntas = [
     },
 
     {
-        enunciado: "Por que a caça e a pesca ilegais são consideradas problemas ambientais?",
+        enunciado: "Respeitar o período de reprodução dos peixes é uma forma de ajudar na preservação das espécies?"
         alternativas: [
             {
                 texto: "Porque podem diminuir populações de animais, ameaçar espécies e desequilibrar os ecossistemas.",
@@ -51,7 +51,7 @@ export const perguntas = [
     },
 
     {
-        enunciado: "Imagine que você encontrou um animal silvestre sendo comercializado ilegalmente. Qual seria a atitude mais adequada?",
+        enunciado: "A captura e o comércio ilegal de animais silvestres podem contribuir para a redução de suas populações?"
         alternativas: [
             {
                 texto: "Não comprar o animal e comunicar o caso aos órgãos responsáveis.",
@@ -67,7 +67,7 @@ export const perguntas = [
     },
 
     {
-        enunciado: "Qual é a importância da fiscalização para combater a caça e a pesca ilegais?",
+        enunciado: "A preservação dos animais silvestres também contribui para o equilíbrio dos ecossistemas?"
         alternativas: [
             {
                 texto: "A fiscalização ajuda a identificar infrações, aplicar as leis e proteger áreas e espécies ameaçadas.",
@@ -84,7 +84,7 @@ export const perguntas = [
     },
 
     {
-        enunciado: "Como a população pode ajudar a combater a caça e a pesca ilegais?",
+        enunciado: "Dnunciar atividades de caça e pesca ilegais pode ajudar no combate aos crimes ambientais?"
         alternativas: [
             {
                 texto: "Respeitando as leis ambientais, não comprando produtos de origem ilegal e denunciando atividades suspeitas.",
